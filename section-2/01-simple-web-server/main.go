@@ -1,14 +1,13 @@
 package main
 
-import (
-	"fmt"
-	"net/http"
-)
+import "net/http"
 
 func main() {
-	http.ListenAndServe(":8080", http.HandlerFunc(index))
+	http.ListenAndServe(":8080", &indexHandler{})
 }
 
-func index(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "Hello, Gopher.")
+type indexHandler struct{}
+
+func (*indexHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("Hello, Gopher."))
 }
