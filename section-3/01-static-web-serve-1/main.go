@@ -11,7 +11,6 @@ func main() {
 func indexHandler(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte(`
 		<!doctype html>
-		<html>
 		<title>Static Web Server</title>
 		<link href=/-/css/style.css rel=stylesheet>
 		<p class=red>
